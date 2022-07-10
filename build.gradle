@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id "org.springframework.boot" version "2.5.3"
+    id "io.spring.dependency-management" version "1.0.11.RELEASE"
+    id "io.freefair.lombok" version "6.0.0-m2"
+}
+
+group 'co.kr.member'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // *** spring starter *** //
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa' //data JPA
+    implementation 'org.springframework.boot:spring-boot-starter-validation' //validation
+    implementation 'org.springframework.boot:spring-boot-starter-web' //starter web
+    implementation 'org.springframework.boot:spring-boot-configuration-processor' // processor
+
+    // *** dev tool and test *** //
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.assertj:assertj-core:3.21.0'
+    testImplementation 'org.mockito:mockito-core:3.1.0'
+
+    // *** gson *** //
+    implementation 'com.google.code.gson:gson'
+
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+
+    // *** h2 *** //
+    runtimeOnly 'com.h2database:h2'
+}
+
+test {
+    useJUnitPlatform()
+}

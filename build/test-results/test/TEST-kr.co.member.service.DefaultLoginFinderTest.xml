@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="kr.co.member.service.DefaultLoginFinderTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-06-01T07:25:26" hostname="gimsanghyeon-ui-MacBookPro.local" time="0.659">
+  <properties/>
+  <testcase name="findByLoginType()" classname="kr.co.member.service.DefaultLoginFinderTest" time="0.654"/>
+  <testcase name="findByLoginType_Throw_Exception()" classname="kr.co.member.service.DefaultLoginFinderTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
