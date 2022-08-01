@@ -1,4 +1,4 @@
-package kr.co.member.external.kakao;
+package kr.co.member.domain;
 
 import lombok.Value;
 

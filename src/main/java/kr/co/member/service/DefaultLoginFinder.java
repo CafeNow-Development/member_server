@@ -1,7 +1,9 @@
 package kr.co.member.service;
 
 import com.google.gson.Gson;
+import kr.co.member.apec.custom.MemberLoginSpecification;
 import kr.co.member.domain.LoginRole;
+import kr.co.member.domain.MemberRole;
 import kr.co.member.external.kakao.KakaoLogin;
 import kr.co.member.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,7 +13,9 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 import java.util.Map;
 
+import static kr.co.member.domain.LoginRole.로컬;
 import static kr.co.member.domain.LoginRole.카카오;
+import static kr.co.member.domain.MemberRole.사장님;
 
 @Component
 public class DefaultLoginFinder implements LoginFinder{
@@ -21,15 +25,18 @@ public class DefaultLoginFinder implements LoginFinder{
     private final Map<LoginRole, Login> loginMap = new HashMap<>();
 
     public DefaultLoginFinder(MemberRepository memberRepository) {
+
         loginMap.put(카카오, new KakaoLogin(memberRepository, kakaoProfileUrl, new RestTemplate(), new Gson()));
     }
 
     @Override
-    public Login findBy(LoginRole type) {
-        Login login = loginMap.get(type);
+    public Login findBy(MemberRole memberType) {
+        Login login;
 
-        if (login == null) {
-            throw new IllegalStateException();
+        if (new MemberLoginSpecification().isSatisfiedBy(memberType)) {
+            login = loginMap.get(카카오);
+        } else {
+            login = loginMap.get(로컬);
         }
 
         return login;

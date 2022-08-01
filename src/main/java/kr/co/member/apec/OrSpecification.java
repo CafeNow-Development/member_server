@@ -1,0 +1,15 @@
+package kr.co.member.apec;
+
+import lombok.EqualsAndHashCode;
+import lombok.Value;
+
+@EqualsAndHashCode(callSuper = true)
+@Value(staticConstructor = "of")
+public class OrSpecification<T> extends AbstractSpecification<T> {
+    Specification some;
+    Specification other;
+
+    public boolean isSatisfiedBy(T candidate) {
+        return some.isSatisfiedBy(candidate) || other.isSatisfiedBy(candidate);
+    }
+}

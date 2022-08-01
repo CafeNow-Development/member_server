@@ -4,7 +4,8 @@ import kr.co.member.util.EnumModel;
 
 public enum LoginRole implements EnumModel {
     카카오("KAKAO"),
-    구글("GOOGLE")
+    구글("GOOGLE"),
+    로컬("LOCAL")
     ;
 
     private final String value;

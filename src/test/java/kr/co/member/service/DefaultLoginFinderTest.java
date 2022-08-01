@@ -9,6 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static kr.co.member.domain.LoginRole.구글;
 import static kr.co.member.domain.LoginRole.카카오;
+import static kr.co.member.domain.MemberRole.사장님;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.verify;
@@ -28,13 +29,7 @@ class DefaultLoginFinderTest {
 
     @Test
     void findByLoginType() {
-        Login login = sut.findBy(카카오);
+        Login login = sut.findBy(사장님);
         assertThat(login.getType()).isEqualTo("KAKAO");
-    }
-
-
-    @Test
-    void findByLoginType_Throw_Exception() {
-        assertThatThrownBy(() -> sut.findBy(구글));
     }
 }

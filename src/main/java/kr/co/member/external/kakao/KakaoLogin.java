@@ -2,6 +2,7 @@ package kr.co.member.external.kakao;
 
 import com.google.gson.Gson;
 import kr.co.member.domain.KakaoProfile;
+import kr.co.member.domain.KakaoRequestResult;
 import kr.co.member.domain.LoginTarget;
 import kr.co.member.domain.Member;
 import kr.co.member.repository.MemberRepository;
