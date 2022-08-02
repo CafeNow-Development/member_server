@@ -2,7 +2,7 @@ package kr.co.member.external.kakao;
 
 import com.google.gson.Gson;
 import kr.co.member.domain.KakaoProfile;
-import kr.co.member.domain.KakaoRequestResult;
+import kr.co.member.domain.RequestResult;
 import kr.co.member.domain.LoginTarget;
 import kr.co.member.domain.Member;
 import kr.co.member.repository.MemberRepository;
@@ -27,7 +27,7 @@ public class KakaoLogin implements Login {
     private final Gson gson;
 
     @Override
-    public KakaoRequestResult execute(LoginTarget target) {
+    public RequestResult execute(LoginTarget target) {
         if (target.getAccessToken() == null) {
             System.out.println("저리가");
         }
@@ -47,16 +47,16 @@ public class KakaoLogin implements Login {
                 Optional<Member> byEmailAndLoginType = memberRepository.findByEmailAndLoginType(kakaoProfile.getEmail(), 카카오);
                 if (byEmailAndLoginType.isEmpty()) {
                     Member saveMember = memberRepository.save(target.createKakaoMember(kakaoProfile, 카카오));
-                    return KakaoRequestResult.of("성공하였습니다.", 200, saveMember.getEmail());
+                    return RequestResult.of("성공하였습니다.", 200, saveMember.getEmail());
                 }
 
-                return KakaoRequestResult.of("성공하였습니다.", 200, byEmailAndLoginType.get().getEmail());
+                return RequestResult.of("성공하였습니다.", 200, byEmailAndLoginType.get().getEmail());
             }
         } catch (Exception e) {
-            return KakaoRequestResult.of("실패하였습니다.", 400, null);
+            return RequestResult.of("실패하였습니다.", 400, null);
         }
 
-        return KakaoRequestResult.of("실패하였습니다.", 400, null);
+        return RequestResult.of("실패하였습니다.", 400, null);
     }
 
     @Override

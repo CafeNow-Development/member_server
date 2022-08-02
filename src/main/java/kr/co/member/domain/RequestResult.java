@@ -3,7 +3,7 @@ package kr.co.member.domain;
 import lombok.Value;
 
 @Value(staticConstructor = "of")
-public class KakaoRequestResult {
+public class RequestResult {
 
     String msg;
     int code;

@@ -25,7 +25,7 @@ public class DefaultLoginFinder implements LoginFinder{
     private final Map<LoginRole, Login> loginMap = new HashMap<>();
 
     public DefaultLoginFinder(MemberRepository memberRepository) {
-
+        loginMap.put(로컬, new LoaclLogin());
         loginMap.put(카카오, new KakaoLogin(memberRepository, kakaoProfileUrl, new RestTemplate(), new Gson()));
     }
 

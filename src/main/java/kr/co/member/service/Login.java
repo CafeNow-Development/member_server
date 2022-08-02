@@ -1,9 +1,9 @@
 package kr.co.member.service;
 
 import kr.co.member.domain.LoginTarget;
-import kr.co.member.domain.KakaoRequestResult;
+import kr.co.member.domain.RequestResult;
 
 public interface Login {
-    KakaoRequestResult execute(LoginTarget target);
+    RequestResult execute(LoginTarget target);
     String getType();
 }
