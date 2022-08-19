@@ -15,6 +15,8 @@ public class LoginTarget {
 
     private String accessToken;
     private MemberRole memberRole;
+    private String email;
+    private String passWord;
 
     public Member createKakaoMember(KakaoProfile profile, LoginRole loginRole) {
         return Member.builder()
@@ -28,19 +30,5 @@ public class LoginTarget {
                 .is_email_verified(profile.getIs_email_verified())
                 .build();
     }
-
-//    public Member createLocalMember(LoginRole loginRole) {
-//        return Member.builder()
-//                .email(this.email)
-//                .name(this.nickName)
-//                .password(this.passWord)
-//                .loginType(loginRole)
-//                .memberType(Collections.singletonList(사장님))
-//                .profile_image_url(null)
-//                .thumbnail_image_url(null)
-//                .is_email_valid(null)
-//                .is_email_verified(null)
-//                .build();
-//    }
 
 }

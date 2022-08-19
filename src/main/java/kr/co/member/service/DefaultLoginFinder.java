@@ -6,7 +6,9 @@ import kr.co.member.domain.LoginRole;
 import kr.co.member.domain.MemberRole;
 import kr.co.member.external.kakao.KakaoLogin;
 import kr.co.member.repository.MemberRepository;
+import kr.co.member.security.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -24,8 +26,8 @@ public class DefaultLoginFinder implements LoginFinder{
     private String kakaoProfileUrl;
     private final Map<LoginRole, Login> loginMap = new HashMap<>();
 
-    public DefaultLoginFinder(MemberRepository memberRepository) {
-        loginMap.put(로컬, new LoaclLogin());
+    public DefaultLoginFinder(MemberRepository memberRepository, PasswordEncoder passwordEncoder, JwtTokenProvider jwtTokenProvider) {
+        loginMap.put(로컬, new LoaclLogin(memberRepository, passwordEncoder, jwtTokenProvider));
         loginMap.put(카카오, new KakaoLogin(memberRepository, kakaoProfileUrl, new RestTemplate(), new Gson()));
     }
 

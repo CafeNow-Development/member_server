@@ -36,6 +36,7 @@ public class Member implements UserDetails {
 
     private String name;
 
+    @Enumerated(STRING)
     private LoginRole loginType;
 
     @Enumerated(STRING) @Column(name = "role")
@@ -75,7 +76,7 @@ public class Member implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return this.password;
     }
 
     @Override

@@ -4,7 +4,7 @@ server:
 spring:
 
   jwt:
-    secret: ldsakfjsodfjwoerl;jkws
+    secret: Drmhze6EPcv0fN_81Bj-nAakdi-djeLdodjIdkkjdlkem-djduJJLdlsmd
 
   h2:
     console:

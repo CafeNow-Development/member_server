@@ -1,11 +1,13 @@
 package kr.co.member.service;
 
 import kr.co.member.repository.MemberRepository;
+import kr.co.member.security.jwt.JwtTokenProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static kr.co.member.domain.LoginRole.구글;
 import static kr.co.member.domain.LoginRole.카카오;
@@ -21,10 +23,15 @@ class DefaultLoginFinderTest {
 
     @Mock
     MemberRepository memberRepository;
+    @Mock
+    PasswordEncoder passwordEncoder;
+
+    @Mock
+    JwtTokenProvider jwtTokenProvider;
 
     @BeforeEach
     void setUp() {
-        sut = new DefaultLoginFinder(memberRepository);
+        sut = new DefaultLoginFinder(memberRepository, passwordEncoder, jwtTokenProvider);
     }
 
     @Test
