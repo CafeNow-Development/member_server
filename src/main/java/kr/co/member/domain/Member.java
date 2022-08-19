@@ -18,6 +18,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE, onConstructor_ = @PersistenceConstructor)
 public class Member implements UserDetails {
@@ -40,7 +41,6 @@ public class Member implements UserDetails {
     @Enumerated(STRING) @Column(name = "role")
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "role_admin", joinColumns = @JoinColumn(name = "adminIdx"))
-    @Builder.Default
     private List<MemberRole> memberType;
 
     @Column(length = 500)
